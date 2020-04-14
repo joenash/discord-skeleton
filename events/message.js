@@ -3,10 +3,8 @@ module.exports = {
     name: 'message',
     description: 'On new message',
 	execute(client, message) {
-
         // Check for prefix 
-        if (message.content.startsWith(client.config.prefix) || !message.author.bot){
-
+        if (message.content.startsWith(client.config.prefix) && !message.author.bot){
             const args = message.content.slice(client.config.prefix.length).split(/ +/);
             const commandName = args.shift().toLowerCase();
                 
