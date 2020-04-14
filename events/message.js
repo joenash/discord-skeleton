@@ -2,8 +2,6 @@ const Discord = require('discord.js');
 module.exports = {
     name: 'message',
     description: 'On new message',
-    guildOnly: false,
-    cooldown: 0,
 	execute(client, message) {
 
 		console.log(message.content);
@@ -11,7 +9,7 @@ module.exports = {
 
         const args = message.content.slice(client.config.prefix.length).split(/ +/);
         const commandName = args.shift().toLowerCase();
-
+        
         const command = client.commands.get(commandName)
             || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
 
