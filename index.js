@@ -1,9 +1,12 @@
 const fs = require('fs');
+const NodeCache = require("node-cache");
+const botCache = new NodeCache();
 
 const config = require('./config.json');
 
 const Discord = require('discord.js');
 const client = new Discord.Client();
+client.cache = botCache;
 client.config = config;
 client.config.token = process.env.DISCORD_TOKEN || client.config.token;
 client.commands = new Discord.Collection;
