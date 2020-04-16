@@ -1,15 +1,33 @@
+require('dotenv').config()
+
 const fs = require('fs');
+
 const NodeCache = require("node-cache");
 const botCache = new NodeCache();
 
 const config = require('./config.json');
 
 const Discord = require('discord.js');
+
 const client = new Discord.Client();
 client.cache = botCache;
 client.config = config;
 client.config.token = process.env.DISCORD_TOKEN || client.config.token;
 client.commands = new Discord.Collection;
+
+const Sequelize = require('sequelize').Sequelize;
+const sequelize = new Sequelize({
+    dialect: 'sqlite',
+    storage: process.env.DB_PATH || client.config.dbPath,
+    logging: false
+});
+
+sequelize.authenticate().then(() => {
+    console.log('DB ok');
+}).catch(err => {
+    console.error('DB error');
+});
+
 
 const init = async () => {
 
