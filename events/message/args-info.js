@@ -1,6 +1,6 @@
 module.exports = {
     name: 'args-info',
-    aliases: ['example', 'test'],
+    aliases: ['example'],
     description: 'Information about the arguments provided.',
     guildOnly: false,
     cooldown: 5,

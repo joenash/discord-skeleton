@@ -4,12 +4,15 @@ module.exports = {
     description: 'On new message',
 	execute(client, message) {
         // Check for prefix 
+        console.log("New message handler");
         if (message.content.startsWith(client.config.prefix) && !message.author.bot){
             const args = message.content.slice(client.config.prefix.length).split(/ +/);
             const commandName = args.shift().toLowerCase();
-                
-            const command = client.commands.get(commandName)
-                || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
+            
+            const eventActions = client.eventActions.get('message');
+
+            const command = eventActions.get(commandName)
+                || eventActions.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
 
             if (!command) return;
 

@@ -13,7 +13,7 @@ const client = new Discord.Client();
 client.cache = botCache;
 client.config = config;
 client.config.token = process.env.DISCORD_TOKEN;
-client.commands = new Discord.Collection;
+client.eventActions = new Discord.Collection;
 
 const db = require('./models/index.js');
 
@@ -27,20 +27,37 @@ const init = async () => {
 
     client.cooldowns = new Discord.Collection();
 
-    fs.readdir("./commands", (err, files) => {
-        const commandFiles = files.filter(file => file.endsWith('.js'));
-        commandFiles.forEach( file => {
-            const command = require(`./commands/${file}`);
-            client.commands.set(command.name, command);
-        });
-    });
+    fs.readdir("./events", { withFileTypes:true }, (err, files) => {
 
-    fs.readdir("./events", (err, files) => {
-        const eventFiles = files.filter(file => file.endsWith('.js'));
+        const eventDirs = files.filter(file => file.isDirectory());
+
+        const eventFiles = files.filter(file => !file.isDirectory() && file.name.endsWith(".js"));
+
         eventFiles.forEach( file => {
-            const event = require(`./events/${file}`);
+            const event = require(`./events/${file.name}`);
             client.on(event.name, event.execute.bind(null, client));
-        })
+        
+        });
+        
+        eventDirs.forEach( eventDir => {
+            let eventActions = new Discord.Collection;
+            fs.readdir(`./events/${eventDir.name}`, (err, files) => {
+                const eventIndex = files.filter(file => file === "index.js");
+                if (!eventIndex.length) return;
+                const eventEntry = require(`./events/${eventDir.name}/index.js`);
+
+                const handlerFiles = files.filter(file => file.endsWith('js') && file != "index.js");
+                handlerFiles.forEach( file =>{
+                    const action = require(`./events/${eventDir.name}/${file}`);
+                    eventActions.set(action.name, action);
+                })
+                
+                client.eventActions.set(eventDir.name, eventActions);
+                client.on(eventDir.name, eventEntry.execute.bind(null, client));
+            });
+            
+        });
+        
     });
     
 client.login(config.token);
