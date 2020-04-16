@@ -1,0 +1,25 @@
+{
+  "bot": {
+    "prefix": "!"
+  },
+  "orm": {
+      "development": {
+      "username": "root",
+      "password": null,
+      "storage": "/Users/joenash/Dropbox/discordbottutorial/discord.sqlite",
+      "dialect": "sqlite"
+    },
+    "test": {
+      "username": "root",
+      "password": null,
+      "database": "database_test",
+      "dialect": "sqlite"
+    },
+    "production": {
+      "username": "root",
+      "password": null,
+      "database": "database_production",
+      "dialect": "sqlite"
+    }
+  }
+}
