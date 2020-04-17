@@ -23,6 +23,8 @@ db.sequelize.authenticate().then(() => {
     console.error('DB error');
 });
 
+client.db = db;
+
 const init = async () => {
 
     client.cooldowns = new Discord.Collection();
