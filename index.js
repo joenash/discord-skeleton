@@ -5,7 +5,7 @@ const fs = require('fs');
 const NodeCache = require("node-cache");
 const botCache = new NodeCache();
 
-const config = require('./config/config.json')["bot"];
+const config = require('./config/bot.json');
 
 const Discord = require('discord.js');
 

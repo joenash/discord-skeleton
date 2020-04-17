@@ -4,6 +4,7 @@ module.exports = {
     description: 'On new message',
 	execute(client, message) {
         // Check for prefix 
+
         console.log("New message handler");
         if (message.content.startsWith(client.config.prefix) && !message.author.bot){
             const args = message.content.slice(client.config.prefix.length).split(/ +/);
@@ -58,7 +59,7 @@ module.exports = {
             }   
 
         } else {
-            // "Commands" without a prefix here
+            // "Commands" without recognised prefix here
         }
     }
 };
