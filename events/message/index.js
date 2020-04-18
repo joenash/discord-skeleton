@@ -104,8 +104,8 @@ function handleNonCommand(client, message){
 
         const eventActions = client.eventActions.get('message');        
 
-        eventActions.forEach( action => {        
-            if (action.name.includes('-nc')) {
+        eventActions.forEach( action => { 
+            if (action.type == 'non-command') {
                 console.log('execute');
                 try {
                     action.execute(client,message);
