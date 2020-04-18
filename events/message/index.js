@@ -115,7 +115,7 @@ function handleNonCommand(client, message){
                 } 
 
             } else {
-                console.log('skip');
+                // Skip command action
             }
         });
     }
