@@ -10,7 +10,7 @@ module.exports = {
         
         try {
             const isCommand = isMessageCommand(client, message);
-            console.log(isCommand);
+            //console.log(isCommand);
             if (isCommand.prefix){
                 handleCommand(client, message, isCommand.command, isCommand.args);
             } else {
@@ -99,7 +99,24 @@ function handleNonCommand(client, message){
         // Handle bot messages        
         console.log("Non command - bot");
     } else {
-        // Handle user non command mesages       
+        // Handle user non command messages  
         console.log("Non command - user");
+
+        const eventActions = client.eventActions.get('message');        
+
+        eventActions.forEach( action => {        
+            if (action.name.includes('-nc')) {
+                console.log('execute');
+                try {
+                    action.execute(client,message);
+                } catch (error){
+                    console.error(error);
+                    message.reply('there was an error trying to execute that non command!');
+                } 
+
+            } else {
+                console.log('skip');
+            }
+        });
     }
 }

@@ -1,16 +1,17 @@
 module.exports = {
-    name: 'afk-timer',
+    name: 'afk-timer-nc',
     aliases: ['example'],
-    description: 'Begins an away timer. Stops timer and posts result when user posts another message',
+    description: 'Begins an away timer when specific strings are detected within a message. Stops timer and posts result when the same user posts another message',
     guildOnly: false,
-    cooldown: 5,
-    args: true,
-    usage: '<arg1> <arg2>',
-	execute(message, args) {
-		if (args[0] === 'foo'){
-            return message.channel.send('bar');
+	execute(client, message) {
+        if (message.author.id == client.cache.get("away-list")) {
+            message.channel.send(`${message.author} is back, yay!`);
+            client.cache.del("away-list"); 
         }
 
-		message.channel.send(`Arguments: ${args}\nArguments length: ${args.length}`);
+		if (message.content.includes('brb')) {            
+            message.channel.send(`${message.author} is away, boo!`);
+            client.cache.set("away-list", message.author.id);        
+        }
 	},
 };
