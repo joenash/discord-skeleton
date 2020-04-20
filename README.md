@@ -1,6 +1,6 @@
 # Discord bot skeleton
 
-This is a basic skeleton for a Discord bot using [discordjs](https://discord.js.org/#/), following the [discordjs guide](https://discordjs.guide/#before-you-begin).
+This is a basic skeleton for a Discord bot using [discordjs](https://discord.js.org/#/), built off of the [discordjs guide](https://discordjs.guide/#before-you-begin).
 This skeleton implements event and command handlers.
 
 ## Development
