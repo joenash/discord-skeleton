@@ -26,7 +26,7 @@ As most Discord bots are reply/response, or execute commands, a default message 
 
 ## Commands and features
 
-Commands are determined by bot.json
+To create a command, export a property ``type: 'command'``. The bot will check that a message has both the configured prefix, and the correct ``type`` property before executing a command.
 We use 'something'-command.js to name commands
 
  - "!" to call bot commands.
