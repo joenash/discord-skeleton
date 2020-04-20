@@ -18,7 +18,7 @@ The bot can be configured via ``config/bot.js``. The default command prefix is "
 
 ### Events
 
-So the idea is that under the events folder, there is a folder for each kind of event. The index.js in that folder handles the event, and the other files are individual pieces of functionality so you would make a new file under messages and then call it from index.js
+To add a new event handler, create a directory within ``events`` named after the event you want to catch (full list within the DiscordJS [Client object](https://discord.js.org/#/docs/main/stable/class/Client)). Every handler must have an ``index.js`` that acts as the entry point to the event. See the existing handler for ``messages`` for an example.
 
 #### Messages
 
