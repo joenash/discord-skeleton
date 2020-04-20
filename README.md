@@ -28,7 +28,6 @@ As most Discord bots are reply/response, or execute commands, a default message 
 
 To create a command, export a property ``type: 'command'``. The bot will check that a message has both the configured prefix, and the correct ``type`` property before executing a command.
 
- - "!" to call bot commands.
 
 If it detects a "!" then it knows the message was a command, and returns the message split up into it's command phrase (e.g. args-info) and any arguments that came after the command phrase (e.g. for !args-info 1 2) it would return 1 and 2 as two args
 
