@@ -22,7 +22,7 @@ To add a new event handler, create a directory within ``events`` named after the
 
 #### Messages
 
-messages/index.js is divided into messages that are commands (have a prefix) and don't
+As most Discord bots are reply/response, or execute commands, a default message handler is included. ``messages/index.js`` detects commands with the configured prefix, and parses arguments. It also supports reacting to non-command message events, for i.e. logging or reply/response. 
 
 ## Commands and features
 
