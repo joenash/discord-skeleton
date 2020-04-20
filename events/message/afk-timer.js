@@ -1,9 +1,7 @@
 module.exports = {
     name: 'afk-timer',
     type: 'non-command',
-    aliases: ['example'],
     description: 'Begins an away timer when specific strings are detected within a message. Stops timer and posts result when the same user posts another message',
-    guildOnly: false,
 	execute(client, message) {
         // Checks if user on away list has returned
         if (client.cache.get('away-list')) {

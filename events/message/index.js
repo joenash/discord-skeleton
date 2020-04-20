@@ -106,7 +106,7 @@ function handleNonCommand(client, message){
 
         eventActions.forEach( action => { 
             if (action.type == 'non-command') {
-                console.log('execute');
+                console.log(`executing ${action.name}`);
                 try {
                     action.execute(client,message);
                 } catch (error){
