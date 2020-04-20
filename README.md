@@ -39,7 +39,7 @@ Below is a list of commands provided by default. Want to add a command? Pull req
  
 ### Features
 
- - 
+ - Basic away tracking with bot response
  
 ### How to shut it down
 
