@@ -31,7 +31,7 @@ To create a command, export a property ``type: 'command'``. The bot will check t
 
 If the bot detects a valid command, it returns the message split up into it's command phrase (e.g. args-info) and any arguments that came after the command phrase (e.g. for !args-info 1 2) it would return 1 and 2 as two args
 
-The ! is a prefix set via config from config/bot.js and those things are under "message" because they are related to the `message` event if we were responding to say, the `isTyping` event, there would be a folder called `isTyping` instead it takes the name of the folder, and uses that to attach the index.js in that folder to the event
+Commands are assumed to be executed in response to user messages, and so are handled by the ``messages`` handler. To add handlers for other events, see [Events](###Events).
 
 ### Commands
 
