@@ -34,7 +34,7 @@ If the bot detects a valid command, it returns the message split up into it's co
 Commands are assumed to be executed in response to user messages, and so are handled by the ``messages`` handler. To add handlers for other events, see [Events](###Events).
 
 ### Commands
-
+Below is a list of commands provided by default. Want to add a command? Pull requests welcome ✨.
  - args-info-command
  
 ### Features
