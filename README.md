@@ -29,7 +29,7 @@ As most Discord bots are reply/response, or execute commands, a default message 
 To create a command, export a property ``type: 'command'``. The bot will check that a message has both the configured prefix, and the correct ``type`` property before executing a command.
 
 
-If it detects a "!" then it knows the message was a command, and returns the message split up into it's command phrase (e.g. args-info) and any arguments that came after the command phrase (e.g. for !args-info 1 2) it would return 1 and 2 as two args
+If the bot detects a valid command, it returns the message split up into it's command phrase (e.g. args-info) and any arguments that came after the command phrase (e.g. for !args-info 1 2) it would return 1 and 2 as two args
 
 The ! is a prefix set via config from config/bot.js and those things are under "message" because they are related to the `message` event if we were responding to say, the `isTyping` event, there would be a folder called `isTyping` instead it takes the name of the folder, and uses that to attach the index.js in that folder to the event
 
