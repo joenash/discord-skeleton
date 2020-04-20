@@ -14,7 +14,7 @@ This skeleton implements event and command handlers.
 
 ### Config
 
-bot.json handles command configuration. We use "!" to call the bot as normal
+The bot can be configured via ``config/bot.js``. The default command prefix is "!". 
 
 ### Events
 
@@ -52,4 +52,3 @@ The ! is a prefix set via config from config/bot.js and those things are under "
  - BRB timers
 
  - Custom reponses
-
