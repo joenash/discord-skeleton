@@ -69,5 +69,14 @@ client.once('ready', () => {
 
 }
 
+process.on('SIGINT', () => {
+    client.destroy();
+});
+
+process.on('SIGTERM', () => {
+    client.destroy();
+});
+
+
 init();
 
